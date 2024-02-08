@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <p>
+
+    </p>
+    <input type="text" id="sendMsg">
+    <button onclick="sendMsg()">send</button>
+</head>
+
+<body>
+    <script>
+
+        const bc = new BroadcastChannel("test_channel");
+        // Example of sending of a very simple message
+        const p = document.querySelector("p")
+        bc.onmessage = (event) => {
+            console.log(event.data);
+            p.innerHTML = event.data
+        };
+        function sendMsg() {
+            let msg = document.getElementById("sendMsg").value;
+            // Example of sending of a very simple message
+            bc.postMessage(msg);
+            // A handler that only logs the event to the console:
+           
+        }
+
+    </script>
+</body>
+
+</html>
